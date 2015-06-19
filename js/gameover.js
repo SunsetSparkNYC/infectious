@@ -13,11 +13,11 @@ var gameoverState = {
         var randIdx = Math.floor(Math.random() * gameOverPhrases.length)
         
 		// Name of the game
-		var nameLabel = game.add.text(game.world.centerX, 160, 'Game Over', { font: '100pt Arial', fill: '#ffffff' });
+		var nameLabel = game.add.text(game.world.centerX, 160, 'Game Over', { font: '48pt "Press Start 2P"', fill: '#ffffff', wordWrap: true, wordWrapWidth: game.world.width-80 });
 		nameLabel.anchor.setTo(0.5, 0.5);
 
 		// How to start the game
-		var startLabel = game.add.text(game.world.centerX, game.world.height-240, gameOverPhrases[randIdx], { font: '50pt Arial', fill: '#ffffff' });
+		var startLabel = game.add.text(game.world.centerX, game.world.height-240, gameOverPhrases[randIdx], { font: '25pt "Press Start 2P"', fill: '#ffffff' });
 		startLabel.anchor.setTo(0.5, 0.5);	
 		game.add.tween(startLabel).to({angle: -2}, 500).to({angle:2}, 500).loop().start(); 
 

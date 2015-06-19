@@ -2,23 +2,43 @@ var playState = {
 
 	create: function() {
         
-		this.scoreLabel = game.add.text(10, 40, 'Score ' + game.global.score, { font: '38pt Arial', fill: '#000aff' });
+		this.scoreLabel = game.add.text(10, 40, 'Score ' + game.global.score, { font: '20pt "Press Start 2P"', fill: '#000aff' });
         this.scoreLabel.fixedToCamera = true;
 		this.scoreLabel.anchor.setTo(0, 0.5);
+        this.scoreLabel.setShadow(0, 3, 'rgba(0,0,0,0.3)', 5);
 
         this.timeLeft = 100;
 		// How to start the game
-		var timeLabel = game.add.text(game.world.centerX, 40, 'Time', { font: '38pt Arial', fill: '#000aff' });
+		var timeLabel = game.add.text(game.world.centerX, 40, 'Time', { font: '20pt "Press Start 2P"', fill: '#000aff' });
         timeLabel.fixedToCamera = true;;
-		timeLabel.anchor.setTo(0.5, 0.5);	
+		timeLabel.anchor.setTo(0.5, 0.5);
+        timeLabel.setShadow(0, 3, 'rgba(0,0,0,0.3)', 5);
         
-        this.timeNumLabel = game.add.text(game.world.centerX, 90, this.timeLeft, { font: '38pt Arial', fill: '#000aff' });
+        this.timeNumLabel = game.add.text(game.world.centerX, 90, this.timeLeft, { font: '20pt "Press Start 2P"', fill: '#000aff' });
         this.timeNumLabel.fixedToCamera = true;
 		this.timeNumLabel.anchor.setTo(0.5, 0.5);
+        this.timeNumLabel.setShadow(0, 3, 'rgba(0,0,0,0.3)', 5);
         
         this.zombies = game.add.group();
         this.zombies.createMultiple(10, 'zombie');
         game.time.events.loop(750, this.addZombie, this);
+        
+        // Controls
+        this.leftArrow = game.add.text(0, game.world.centerY, '<', { font: '60pt "Press Start 2P"', fill: '#000' });
+        this.rightArrow = game.add.text(game.world.width, game.world.centerY, '>', { font: '60pt "Press Start 2P"', fill: '#000' });
+        
+        
+        this.leftArrow.inputEnabled = true;
+        this.rightArrow.inputEnabled = true;
+        this.leftArrow.anchor.setTo(0, 0.5);
+        this.rightArrow.anchor.setTo(1, 0.5);
+        this.leftArrow.fixedToCamera = true;
+        this.rightArrow.fixedToCamera = true;
+        
+        this.leftArrow.events.onInputDown.add(function () {this.movingLeft=true;}, this);
+        this.rightArrow.events.onInputDown.add(function () {this.movingRight=true;}, this);
+        this.leftArrow.events.onInputUp.add(function () {this.movingLeft=false;}, this);
+        this.rightArrow.events.onInputUp.add(function () {this.movingRight=false;}, this);
         
         game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
         game.time.events.loop(Phaser.Timer.SECOND, this.updateZombies, this);
@@ -34,14 +54,11 @@ var playState = {
         if (this.timeLeft  <= 0) {
             game.state.start('gameover');
         }
-
-        if (this.cursors.left.isDown)
-        {
-            game.camera.x -= 50;
-        }
-        else if (this.cursors.right.isDown)
-        {
-            game.camera.x += 50;
+        
+        if (this.movingLeft) {
+            game.camera.x -= 30;
+        } else if (this.movingRight) {
+            game.camera.x += 30;
         }
 	},
     

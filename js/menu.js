@@ -3,11 +3,11 @@ var menuState = {
 	create: function() { 
         game.global.score = 0;
 		// Name of the game
-		var nameLabel = game.add.text(game.world.centerX, 160, 'Infectious', { font: '100pt Arial', fill: '#ffffff' });
+		var nameLabel = game.add.text(game.world.centerX, 160, 'Infectious', { font: '50pt "Press Start 2P"', fill: '#ffffff' });
 		nameLabel.anchor.setTo(0.5, 0.5);
 
 		// How to start the game
-		var startLabel = game.add.text(game.world.centerX, game.world.height-240, 'Play!', { font: '50pt Arial', fill: '#ffffff' });
+		var startLabel = game.add.text(game.world.centerX, game.world.height-240, 'Click to Play!', { font: '25pt "Press Start 2P"', fill: '#ffffff' });
 		startLabel.anchor.setTo(0.5, 0.5);	
 		game.add.tween(startLabel).to({angle: -2}, 500).to({angle:2}, 500).loop().start(); 
 
