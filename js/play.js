@@ -45,7 +45,7 @@ var playState = {
         
         this.cursors = game.input.keyboard.createCursorKeys();
         
-        game.world.resize(5067, game.world.height);
+        game.world.resize(4096, game.world.height);
         game.add.sprite(0, 0, 'bg' + Math.floor(Math.random() * 3)).sendToBack();
         
 	},
