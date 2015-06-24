@@ -7,7 +7,7 @@ var playState = {
 		this.scoreLabel.anchor.setTo(0, 0.5);
         this.scoreLabel.setShadow(0, 3, 'rgba(0,0,0,0.3)', 5);
 
-        this.timeLeft = 100;
+        this.timeLeft = 5;
 		// How to start the game
 		var timeLabel = game.add.text(game.world.centerX, 40, 'Time', { font: '20pt "Press Start 2P"', fill: '#000aff' });
         timeLabel.fixedToCamera = true;;
@@ -85,14 +85,17 @@ var playState = {
         if (zombie.hits >= 3) {
             game.global.score += 500;
             zombie.kill();
+            
+            this.timeLeft = this.timeLeft - 3;
+            this.timeNumLabel.text = this.timeLeft;
         } else {
-            game.global.score += 100;
+            game.global.score += 250;
         }
         this.scoreLabel.text = 'Score ' + game.global.score;
     },
     
     takeHit: function () {
-        this.timeLeft = this.timeLeft - 3;
+        this.timeLeft = this.timeLeft - 5;
         this.timeNumLabel.text = this.timeLeft;
     },
     

@@ -15,12 +15,14 @@ var bootState = {
             game.scale.minWidth = 320;
             game.scale.minHeight = 180;
             game.scale.maxWidth = 1280;
-            game.scale.maxHeight = 720;
-            game.scale.pageAlignHorizontally = true;
-            game.scale.pageAlignVertically = true;
+            game.scale.maxHeight = 800;
             game.scale.setScreenSize(true);
         }
+
+        game.scale.pageAlignHorizontally = true;
+        game.scale.pageAlignVertically = true;
         
+        game.global.highScore = 0;
 		game.state.start('load');
 	}
 };

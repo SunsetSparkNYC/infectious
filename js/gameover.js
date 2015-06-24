@@ -8,6 +8,7 @@ var gameoverState = {
                 'EPIC FAIL!!!!' ,
                 'ZOMBIES WIN AND YOU DIED' ,
                 'ZOMBIES ATE YOUR BRAIN' ,
+                'YOU LOSE I WIN (it was the zombie that said it)',
         ];
         
         var randIdx = Math.floor(Math.random() * gameOverPhrases.length)
@@ -20,13 +21,14 @@ var gameoverState = {
 		var startLabel = game.add.text(game.world.centerX, game.world.height-240, gameOverPhrases[randIdx], { font: '25pt "Press Start 2P"', fill: '#ffffff' });
 		startLabel.anchor.setTo(0.5, 0.5);	
 		game.add.tween(startLabel).to({angle: -2}, 500).to({angle:2}, 500).loop().start(); 
-
-		// Add a mute button
-		this.muteButton = game.add.button(20, 20, 'mute', this.toggleSound, this);
-		this.muteButton.input.useHandCursor = true;
-		if (game.sound.mute) {
-			this.muteButton.frame = 1;
-		}
+        
+        // Score
+		var endScoreLabel = game.add.text(game.world.centerX, game.world.centerY-50, game.global.score + ' Points', { font: '35pt "Press Start 2P"', fill: '#ffffff' });
+        endScoreLabel.anchor.setTo(0.5, 0.5);
+        
+        if (game.global.score >= game.global.highScore) {
+            game.global.highScore = game.global.score;
+        }
 
         game.input.onDown.addOnce(this.start, this);
 	},
