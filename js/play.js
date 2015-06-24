@@ -7,7 +7,7 @@ var playState = {
 		this.scoreLabel.anchor.setTo(0, 0.5);
         this.scoreLabel.setShadow(0, 3, 'rgba(0,0,0,0.3)', 5);
 
-        this.timeLeft = 5;
+        this.timeLeft = 99;
 		// How to start the game
 		var timeLabel = game.add.text(game.world.centerX, 40, 'Time', { font: '20pt "Press Start 2P"', fill: '#000aff' });
         timeLabel.fixedToCamera = true;;
@@ -40,7 +40,7 @@ var playState = {
         this.leftArrow.events.onInputUp.add(function () {this.movingLeft=false;}, this);
         this.rightArrow.events.onInputUp.add(function () {this.movingRight=false;}, this);
         
-        game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
+        game.time.events.loop(Phaser.Timer.HALF, this.updateTimer, this);
         game.time.events.loop(Phaser.Timer.SECOND, this.updateZombies, this);
         
         this.cursors = game.input.keyboard.createCursorKeys();
@@ -86,7 +86,7 @@ var playState = {
             game.global.score += 500;
             zombie.kill();
             
-            this.timeLeft = this.timeLeft - 3;
+            this.timeLeft = this.timeLeft + 2;
             this.timeNumLabel.text = this.timeLeft;
         } else {
             game.global.score += 250;
