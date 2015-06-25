@@ -11,7 +11,6 @@ var loadState = {
 		game.load.setPreloadSprite(progressBar);
 
 		// Load all assets
-		game.load.spritesheet('mute', 'assets/muteButton.png', 28, 22);
 		game.load.image('zombie', 'assets/zombie.png');
         game.load.image('bg0', 'assets/level1.jpg');
         game.load.image('bg1', 'assets/level2.jpg');

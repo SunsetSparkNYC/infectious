@@ -9,15 +9,13 @@ var bootState = {
 		game.stage.backgroundColor = '#9d0101';
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        if (!game.device.desktop) {
-            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-            document.body.style.backgroundColor = '#9d0101';
-            game.scale.minWidth = 320;
-            game.scale.minHeight = 180;
-            game.scale.maxWidth = 1280;
-            game.scale.maxHeight = 800;
-            game.scale.setScreenSize(true);
-        }
+        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        document.body.style.backgroundColor = '#9d0101';
+        game.scale.minWidth = 320;
+        game.scale.minHeight = 180;
+        game.scale.maxWidth = 1280;
+        game.scale.maxHeight = 800;
+        game.scale.setScreenSize(true);
 
         game.scale.pageAlignHorizontally = true;
         game.scale.pageAlignVertically = true;
